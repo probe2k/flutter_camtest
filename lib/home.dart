@@ -15,6 +15,25 @@ class _AppHomeState extends State<AppHome> {
   int selectedCameraIndex;
   String imgPath;
 
+  @override
+  void initState() {
+    super.initState();
+    availableCameras().then((availableCameras) {
+      camera = availableCameras;
+
+      if (camera.length > 0) {
+        setState(() {
+          selectedCameraIndex = 0;
+        });
+        _initCameraController(camera[selectedCameraIndex]).then((void v) {});
+      } else {
+        print('No cameras availabel');
+      }
+    }).catchError((err) {
+      print('Error : ${err.code}');
+    });
+  }
+
   Future _initCameraController(CameraDescription cameraDescription) async {
     if (cameraController != null) {
       await cameraController.dispose();
