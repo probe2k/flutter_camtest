@@ -2,6 +2,11 @@
 
 A flutter application to init camera, click and save images.
 
+## Initial Changes
+
+Media setup!
+Preview Add
+
 ## TO-DO -> After blueprint finishup
 
 1. Add filters/effects and popups
