@@ -1,3 +1,4 @@
+import 'package:camera_flutter/pages/view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
@@ -185,6 +186,15 @@ class _AppHomeState extends State<AppHome> {
       final path =
           join((await getTemporaryDirectory()).path, '${DateTime.now()}.png');
       await cameraController.takePicture(path);
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Viewer(
+            imgPath: path,
+          ),
+        ),
+      );
     } catch (e) {
       _showCameraException(e);
     }
