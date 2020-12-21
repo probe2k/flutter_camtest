@@ -57,7 +57,7 @@ class _ViewerState extends State<Viewer> {
   }
 
   Future<ByteData> getBytes() async {
-    Uint8List bytes = File(widget.imgPath).readAsLinesSync() as Uint8List;
+    Uint8List bytes = File(widget.imgPath).readAsBytesSync() as Uint8List;
     return ByteData.view(bytes.buffer);
   }
 }
